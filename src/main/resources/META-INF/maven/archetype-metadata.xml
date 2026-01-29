@@ -18,17 +18,125 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-
+<!-- 显式声明完整项目原型，符合官方规范；UTF-8 全局编码，统一所有文件集编码，避免中文乱码 -->
 <archetype-descriptor xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
-  name="${artifactId}">
+    name="${artifactId}"
+                      partial="false" sourceEncoding="UTF-8" >
 
+
+  <!-- 强制约束核心参数，支持自定义根模块ID -->
+  <requiredProperties>
+    <!-- Maven核心三坐标，强制输入 -->
+    <requiredProperty key="groupId"/>
+    <requiredProperty key="artifactId"/>
+    <requiredProperty key="version">
+      <defaultValue>1.0.0-SNAPSHOT</defaultValue>
+    </requiredProperty>
+    <!-- 项目基础包名，默认拼接groupId+artifactId，用户可覆盖 -->
+    <requiredProperty key="package">
+      <defaultValue>${groupId}.${artifactId}</defaultValue>
+    </requiredProperty>
+    <!-- 根模块ID，与archetype-resources中目录占位符__rootArtifactId__匹配，默认复用artifactId -->
+    <requiredProperty key="rootArtifactId">
+      <defaultValue>${artifactId}</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+  <!-- 声明所有子模块 -->
+  <modules>
+    <module id="${rootArtifactId}-common" dir="__rootArtifactId__-common" name="${rootArtifactId}-common">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/test/java</directory>
+        </fileSet>
+        <!-- 子模块添加资源目录，适配配置文件/静态资源场景 -->
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+        </fileSet>
+      </fileSets>
+    </module>
+
+    <module id="${rootArtifactId}-controller" dir="__rootArtifactId__-controller" name="${rootArtifactId}-controller">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/test/java</directory>
+        </fileSet>
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+        </fileSet>
+      </fileSets>
+    </module>
+
+    <module id="${rootArtifactId}-model" dir="__rootArtifactId__-model" name="${rootArtifactId}-model">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/test/java</directory>
+        </fileSet>
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+        </fileSet>
+      </fileSets>
+    </module>
+
+    <module id="${rootArtifactId}-repository" dir="__rootArtifactId__-repository" name="${rootArtifactId}-repository">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/test/java</directory>
+        </fileSet>
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+        </fileSet>
+      </fileSets>
+    </module>
+
+    <module id="${rootArtifactId}-service" dir="__rootArtifactId__-service" name="${rootArtifactId}-service">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/test/java</directory>
+        </fileSet>
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+        </fileSet>
+      </fileSets>
+    </module>
+  </modules>
+
+  <!-- 根目录文件（如顶层pom.xml） -->
   <fileSets>
-    <fileSet filtered="true" packaged="true">
-      <directory>src/main/java</directory>
+    <fileSet filtered="true" packaged="false" encoding="UTF-8">
+      <!-- 空目录改为.，符合Maven官方路径规范，避免解析异常 -->
+      <directory>.</directory>
+      <includes>
+        <include>pom.xml</include>
+      </includes>
     </fileSet>
-    <fileSet filtered="true" packaged="true">
-      <directory>src/test/java</directory>
+    <!-- 根目录添加README/说明文件，提升原型易用性 -->
+    <fileSet filtered="true" packaged="false" encoding="UTF-8">
+    <directory>.</directory>
+    <includes>
+      <include>README.md</include>
+    </includes>
     </fileSet>
   </fileSets>
+
+  <!-- 保留空目录，适配预留目录场景，如日志/临时文件目录 -->
+  <emptyDirs>
+    <emptyDir>src/main/resources/logs</emptyDir>
+    <emptyDir>src/main/resources/temp</emptyDir>
+  </emptyDirs>
 </archetype-descriptor>

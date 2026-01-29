@@ -6,18 +6,34 @@
 
   <groupId>io.github.bobby</groupId>
   <artifactId>layered-multi-module-archetype</artifactId>
-  <version>1.0.0</version>
+  <!-- 版本添加SNAPSHOT，区分开发版/正式版，适配Maven仓库规范 -->
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>Archetype - layered-multi-module-archetype</name>
+  <!--项目描述、URL、开发者信息，符合Maven项目规范，提升可维护性 -->
+  <description>Maven Archetype for Java Layered Multi-Module Project（分层多模块项目原型）</description>
+  <url>https://github.com/yidongdematong/layered-multi-module-archetype</url>
+  <developers>
+    <developer>
+      <id>bobby</id>
+      <name>Bobby</name>
+      <email>yidongdematong@gmail.com</email>
+      <url>https://github.com/yidongdematong</url>
+    </developer>
+  </developers>
 
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
+    <!-- 统一插件版本，抽离为属性，便于后续维护升级 -->
+    <archetype.version>3.2.1</archetype.version>
+    <maven.plugin.version>3.1.2</maven.plugin.version>
+    <clean.plugin.version>3.4.0</clean.plugin.version>
+    <resources.plugin.version>3.3.1</resources.plugin.version>
   </properties>
 
   <build>
@@ -25,32 +41,61 @@
       <extension>
         <groupId>org.apache.maven.archetype</groupId>
         <artifactId>archetype-packaging</artifactId>
-        <version>3.2.0</version>
+        <!-- 最新稳定版3.2.1，修复3.2.0的部分已知bug -->
+        <version>${archetype.version}</version>
       </extension>
     </extensions>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+
+    <pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.4.0</version>
+          <version>${clean.plugin.version}</version>
         </plugin>
+        <!-- 核心：maven-archetype-plugin，原型的安装/生成核心插件 -->
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-archetype-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>${archetype.version}</version>
+          <!-- 添加插件配置，强制校验原型配置，避免配置错误 -->
+<!--          <configuration>-->
+<!--            <ignoreOldFormat>true</ignoreOldFormat>-->
+<!--          </configuration>-->
+          <!-- 绑定archetype:jar目标，生成原型jar包，适配仓库发布 -->
+          <executions>
+            <execution>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.3.1</version>
+          <version>${resources.plugin.version}</version>
+          <!-- 配置资源过滤，保证archetype-resources中模板文件的编码和属性替换 -->
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>3.1.2</version>
+          <version>${maven.plugin.version}</version>
         </plugin>
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.1.2</version>
+          <version>${maven.plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
+
+    <!-- 显式声明构建插件，让Maven执行archetype相关目标 -->
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-archetype-plugin</artifactId>
+        <version>${archetype.version}</version>
+      </plugin>
+    </plugins>
   </build>
 </project>
