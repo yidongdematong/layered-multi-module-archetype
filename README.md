@@ -23,7 +23,7 @@ mvn clean install
    执行以下命令，按控制台提示输入自定义项目 GAV 参数（groupId/artifactId/version），即可生成标准化项目骨架：
  ```
   mvn archetype:generate \
-   -DarchetypeGroupId=io.github.你的GitHub账号 \
+   -DarchetypeGroupId=io.github.bobby \
    -DarchetypeArtifactId=layered-multi-module-archetype \
    -DarchetypeVersion=1.0.0.RELEASE
 ```
