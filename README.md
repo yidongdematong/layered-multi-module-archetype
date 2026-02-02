@@ -33,6 +33,7 @@ mvn archetype:generate \
   -Dpackage=com.demo.myproject \                # 基础包名（可选，默认=${groupId}.${artifactId}，可省略）
   -DrootArtifactId=my-project \                 # 子模块前缀（可选，默认=${artifactId}，可省略）
   -DjavaVersion=8 \                             # Java版本（可选，默认8，可省略）
+  -DinteractiveMode=false \                     # 强制查本地
   -DinteractiveMode=false                       # 非交互式，无需手动回车确认
 ```
  
@@ -58,6 +59,11 @@ mvn archetype:generate \
 ### 开源许可证
    本项目采用Apache License 2.0 开源许可证，允许商业使用、修改、分发，仅需保留版权声明。
 
+## 版本更新与变更
+- 最新稳定版：`1.0.1-SNAPSHOT`
+- 最近更新：新增Java版本动态指定参数`javaVersion`（默认8），完善多模块原型属性配置，修复Archetype集成测试缺失属性问题。
 
+完整详细变更日志请查看：[CHANGELOG.md](./CHANGELOG.md)
+所有正式发布版本：[GitHub Releases](https://github.com/yidongdematong/layered-multi-module-archetype/releases)
 
 [yidongdematong@gmail.com](yidongdematong@gmail.com):联系我
