@@ -9,4 +9,11 @@
   </parent>
   <artifactId>${rootArtifactId}-service</artifactId>
 
+  <dependencies>
+
+    <dependency>
+      <groupId>${groupId}</groupId>
+      <artifactId>${rootArtifactId}-repository</artifactId>
+    </dependency>
+  </dependencies>
 </project>

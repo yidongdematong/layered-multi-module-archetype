@@ -8,4 +8,11 @@
     <version>${version}</version>
   </parent>
   <artifactId>${rootArtifactId}-controller</artifactId>
+<!--  子模块依赖关系 -->
+  <dependencies>
+    <dependency>
+      <groupId>${groupId}</groupId>
+      <artifactId>${rootArtifactId}-service</artifactId>
+    </dependency>
+  </dependencies>
 </project>

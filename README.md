@@ -27,14 +27,15 @@ mvn archetype:generate \
   -DarchetypeGroupId=io.github.bobby \          # 你的原型组ID
   -DarchetypeArtifactId=layered-multi-module-archetype \  # 你的原型构件ID
   -DarchetypeVersion=1.0.0-SNAPSHOT \           # 你的原型版本
-  -DgroupId=com.demo \                          # 项目组ID（必填，替换为你的实际值）
-  -DartifactId=my-project \                     # 父项目名称（必填，替换为你的实际值）
-  -Dversion=1.0.0-SNAPSHOT \                    # 项目版本（可选，默认就是这个值，可省略）
-  -Dpackage=com.demo.myproject \                # 基础包名（可选，默认=${groupId}.${artifactId}，可省略）
-  -DrootArtifactId=my-project \                 # 子模块前缀（可选，默认=${artifactId}，可省略）
-  -DjavaVersion=8 \                             # Java版本（可选，默认8，可省略）
-  -DinteractiveMode=false \                     # 强制查本地
-  -DinteractiveMode=false                       # 非交互式，无需手动回车确认
+  -DgroupId=com.bobby \                         # 项目组ID（必填）
+  -DartifactId=bobbyDemo \                      # 父项目名称（必填）
+  -Dversion=1.0.0 \                             # 项目版本（可选，默认1.0-SNAPSHOT）
+  -Dpackage=com.bobby \                         # 基础包名（可选，默认=${groupId}.${artifactId}）
+  -DrootArtifactId=bobbyDemo \                  # 子模块前缀（可选，默认=${artifactId}）
+  -DjavaVersion=17 \                            # Java版本（可选，默认8）
+  -DcompilerPluginVersion=3.11.0 \              # maven-compiler-plugin版本（可选）
+  -DinteractiveMode=false \                     # 非交互模式，跳过确认
+  -DarchetypeCatalog=local                      # 仅从本地仓库查找原型
 ```
  
   ##  实际生成的标准项目架构

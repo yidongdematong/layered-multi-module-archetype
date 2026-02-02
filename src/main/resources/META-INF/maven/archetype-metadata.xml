@@ -45,6 +45,10 @@ under the License.
     <requiredProperty key="javaVersion">
       <defaultValue>8</defaultValue>
     </requiredProperty>
+<!--   新增：指定编译插件版本信息，默认3.11.0 -->
+    <requiredProperty key="compilerPluginVersion">
+      <defaultValue>3.11.0</defaultValue>
+    </requiredProperty>
   </requiredProperties>
   <!-- 声明所有子模块 -->
   <modules>

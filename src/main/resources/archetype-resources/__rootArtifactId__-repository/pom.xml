@@ -9,4 +9,14 @@
   </parent>
   <artifactId>${rootArtifactId}-repository</artifactId>
 
+  <dependencies>
+    <dependency>
+      <groupId>${groupId}</groupId>
+      <artifactId>${rootArtifactId}-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>${groupId}</groupId>
+      <artifactId>${rootArtifactId}-common</artifactId>
+    </dependency>
+  </dependencies>
 </project>
