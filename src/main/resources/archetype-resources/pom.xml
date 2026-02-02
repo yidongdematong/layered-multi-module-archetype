@@ -7,6 +7,12 @@
   <artifactId>${rootArtifactId}</artifactId>
   <version>${version}</version>
   <packaging>pom</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>${javaVersion}</maven.compiler.source>
+    <maven.compiler.target>${javaVersion}</maven.compiler.target>
+  </properties>
   <modules>
   </modules>
 </project>

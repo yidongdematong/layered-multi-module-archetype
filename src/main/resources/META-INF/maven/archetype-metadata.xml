@@ -41,6 +41,10 @@ under the License.
     <requiredProperty key="rootArtifactId">
       <defaultValue>${artifactId}</defaultValue>
     </requiredProperty>
+    <!-- 新增：Java版本属性，默认值8 -->
+    <requiredProperty key="javaVersion">
+      <defaultValue>8</defaultValue>
+    </requiredProperty>
   </requiredProperties>
   <!-- 声明所有子模块 -->
   <modules>

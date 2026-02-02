@@ -22,10 +22,18 @@ mvn clean install
 2. 一键生成分层多模块项目
    执行以下命令，按控制台提示输入自定义项目 GAV 参数（groupId/artifactId/version），即可生成标准化项目骨架：
  ```
-  mvn archetype:generate \
-   -DarchetypeGroupId=io.github.bobby \
-   -DarchetypeArtifactId=layered-multi-module-archetype \
-   -DarchetypeVersion=1.0.0.RELEASE
+# 完整参数版（显式指定所有参数）
+mvn archetype:generate \
+  -DarchetypeGroupId=io.github.bobby \          # 你的原型组ID
+  -DarchetypeArtifactId=layered-multi-module-archetype \  # 你的原型构件ID
+  -DarchetypeVersion=1.0.0-SNAPSHOT \           # 你的原型版本
+  -DgroupId=com.demo \                          # 项目组ID（必填，替换为你的实际值）
+  -DartifactId=my-project \                     # 父项目名称（必填，替换为你的实际值）
+  -Dversion=1.0.0-SNAPSHOT \                    # 项目版本（可选，默认就是这个值，可省略）
+  -Dpackage=com.demo.myproject \                # 基础包名（可选，默认=${groupId}.${artifactId}，可省略）
+  -DrootArtifactId=my-project \                 # 子模块前缀（可选，默认=${artifactId}，可省略）
+  -DjavaVersion=8 \                             # Java版本（可选，默认8，可省略）
+  -DinteractiveMode=false                       # 非交互式，无需手动回车确认
 ```
  
   ##  实际生成的标准项目架构
