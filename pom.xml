@@ -7,7 +7,7 @@
   <groupId>io.github.bobby</groupId>
   <artifactId>layered-multi-module-archetype</artifactId>
   <!-- 版本添加SNAPSHOT，区分开发版/正式版，适配Maven仓库规范 -->
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>maven-archetype</packaging>
 
   <name>Archetype - layered-multi-module-archetype</name>
@@ -27,13 +27,15 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <!-- 统一插件版本，抽离为属性，便于后续维护升级 -->
     <archetype.version>3.2.1</archetype.version>
     <maven.plugin.version>3.1.2</maven.plugin.version>
     <clean.plugin.version>3.4.0</clean.plugin.version>
     <resources.plugin.version>3.3.1</resources.plugin.version>
+    <!-- 跳过集成测试 -->
+    <maven.test.skip>true</maven.test.skip>
   </properties>
 
   <build>
@@ -100,17 +102,17 @@
   </build>
 
 <!--  配置 私库信息-->
-<!--  <distributionManagement>-->
-<!--&lt;!&ndash;    正式版地址&ndash;&gt;-->
-<!--    <repository>-->
+  <distributionManagement>
+<!--    正式版地址-->
+    <repository>
+      <id>bobby-group</id>
+      <name>personal maven</name>
+      <url>http://173.16.10.2:10086/repository/bobby-hosted/</url>
+    </repository>
+<!--    <snapshotRepository>-->
 <!--      <id>bobby-group</id>-->
 <!--      <name>personal maven</name>-->
-<!--      <url>http://127.0.0.1:10086/repository/bobby-hosted/</url>-->
-<!--    </repository>-->
-<!--&lt;!&ndash;    <snapshotRepository>&ndash;&gt;-->
-<!--&lt;!&ndash;      <id>bobby-group</id>&ndash;&gt;-->
-<!--&lt;!&ndash;      <name>personal maven</name>&ndash;&gt;-->
-<!--&lt;!&ndash;      <url>http://127.0.0.1:10086/repository/bobby-snapshots/</url>&ndash;&gt;-->
-<!--&lt;!&ndash;    </snapshotRepository>&ndash;&gt;-->
-<!--  </distributionManagement>-->
+<!--      <url>http://127.0.0.1:10086/repository/bobby-snapshots/</url>-->
+<!--    </snapshotRepository>-->
+  </distributionManagement>
 </project>

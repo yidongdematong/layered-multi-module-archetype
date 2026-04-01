@@ -43,7 +43,7 @@ under the License.
     </requiredProperty>
     <!-- 新增：Java版本属性，默认值8 -->
     <requiredProperty key="javaVersion">
-      <defaultValue>8</defaultValue>
+      <defaultValue>17</defaultValue>
     </requiredProperty>
 <!--   新增：指定编译插件版本信息，默认3.11.0 -->
     <requiredProperty key="compilerPluginVersion">
@@ -56,9 +56,15 @@ under the License.
       <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/test/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <!-- 子模块添加资源目录，适配配置文件/静态资源场景 -->
         <fileSet filtered="false" packaged="false" encoding="UTF-8">
@@ -71,9 +77,15 @@ under the License.
       <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/test/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <fileSet filtered="false" packaged="false" encoding="UTF-8">
           <directory>src/main/resources</directory>
@@ -85,9 +97,15 @@ under the License.
       <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/test/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <fileSet filtered="false" packaged="false" encoding="UTF-8">
           <directory>src/main/resources</directory>
@@ -99,9 +117,15 @@ under the License.
       <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/test/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <fileSet filtered="false" packaged="false" encoding="UTF-8">
           <directory>src/main/resources</directory>
@@ -113,9 +137,15 @@ under the License.
       <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/test/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
         </fileSet>
         <fileSet filtered="false" packaged="false" encoding="UTF-8">
           <directory>src/main/resources</directory>
@@ -124,21 +154,28 @@ under the License.
     </module>
   </modules>
 
-  <!-- 根目录文件（如顶层pom.xml） -->
+  <!-- 根目录文件（如顶层 pom.xml） -->
   <fileSets>
     <fileSet filtered="true" packaged="false" encoding="UTF-8">
-      <!-- 空目录改为.，符合Maven官方路径规范，避免解析异常 -->
+      <!-- 空目录改为.，符合 Maven 官方路径规范，避免解析异常 -->
       <directory>.</directory>
       <includes>
         <include>pom.xml</include>
       </includes>
     </fileSet>
-    <!-- 根目录添加README/说明文件，提升原型易用性 -->
+    <!-- 根目录添加 README/说明文件，提升原型易用性 -->
     <fileSet filtered="true" packaged="false" encoding="UTF-8">
     <directory>.</directory>
     <includes>
       <include>README.md</include>
     </includes>
+    </fileSet>
+    <!-- 添加 controller 模块 Application.java 文件过滤 -->
+    <fileSet filtered="true" packaged="true" encoding="UTF-8">
+      <directory>__rootArtifactId__-controller/src/main/java</directory>
+      <includes>
+        <include>**/*.java</include>
+      </includes>
     </fileSet>
   </fileSets>
 

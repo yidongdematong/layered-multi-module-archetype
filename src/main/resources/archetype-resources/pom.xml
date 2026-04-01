@@ -13,6 +13,12 @@
     <maven.compiler.source>${javaVersion}</maven.compiler.source>
     <maven.compiler.target>${javaVersion}</maven.compiler.target>
     <maven.compiler.plugin.version>${compilerPluginVersion}</maven.compiler.plugin.version>
+
+    <!-- springboot -->
+    <spring.boot.version>3.5.11</spring.boot.version>
+
+    <!--        websocket-->
+    <org.springframework.websocket.version>2.5.15</org.springframework.websocket.version>
   </properties>
 
 <!--  统一管理所有依赖的版本 -->
@@ -52,6 +58,24 @@
         <artifactId>${rootArtifactId}-controller</artifactId>
         <version>${project.version}</version>
       </dependency>
+
+
+      <!--      springboot pom-->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-websocket</artifactId>
+        <version>${org.springframework.websocket.version}</version>
+        <scope>compile</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <!--
@@ -66,13 +90,18 @@
   <pluginManagement>
   <plugins>
     <!--
-       Maven编译器插件配置。
-       该插件用于编译Java源代码，支持指定Java版本和其他编译选项。
+       Maven 编译器插件配置。
+       该插件用于编译 Java 源代码，支持指定 Java 版本和其他编译选项。
      -->
   <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>
     <version>${maven.compiler.plugin.version}</version>
+    <configuration>
+      <source>${javaVersion}</source>
+      <target>${javaVersion}</target>
+      <encoding>UTF-8</encoding>
+    </configuration>
   </plugin>
   </plugins>
 </pluginManagement>
@@ -84,4 +113,20 @@
       <module>${rootArtifactId}-service</module>
       <module>${rootArtifactId}-controller</module>
   </modules>
+
+
+  <!--  配置 私库信息-->
+  <repositories>
+    <repository>
+      <id>bobby-group</id>
+      <name>personal maven</name>
+      <url>http://173.16.10.2:10086/repository/bobby-group/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 </project>

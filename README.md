@@ -8,6 +8,77 @@
 - 一键快速生成：通过 mvn archetype:generate 命令，无需手动搭建目录，直接生成标准化项目骨架
 - 无侵入扩展：纯架构原型不内置任何技术栈依赖，可自由集成 Spring Boot/MyBatis 等任意框架
 - 分支化扩展：基础主干为纯架构骨架，技术栈集成版本（如 Spring Boot）将在后续分支中提供
+
+## 分支说明
+
+### dev-springboot3.5.11 分支
+
+本分支基于 Spring Boot 3.5.11 版本构建，预集成了企业级开发常用依赖，开箱即用。
+
+#### 引入的第三方依赖
+
+**父 POM 通过 Maven Properties 定义版本变量：**
+```xml
+<properties>
+    <spring.boot.version>3.5.11</spring.boot.version>
+    <org.springframework.websocket.version>2.5.15</org.springframework.websocket.version>
+</properties>
+```
+
+**`<dependencyManagement>` 统一管理的第三方依赖：**
+
+1. **Spring Boot Dependencies BOM**
+   - `groupId`: org.springframework.boot
+   - `artifactId`: spring-boot-dependencies
+   - `version`: ${spring.boot.version} (3.5.11)
+   - `type`: pom
+   - `scope`: import
+   
+   说明：通过 BOM 方式导入 Spring Boot 完整依赖集，统一管理所有 Spring Boot 相关组件版本
+
+2. **Spring Boot Starter WebSocket**
+   - `groupId`: org.springframework.boot
+   - `artifactId`: spring-boot-starter-websocket
+   - `version`: ${org.springframework.websocket.version} (2.5.15)
+   - `scope`: compile
+   
+   说明：提供 WebSocket 通信能力，支持 WebSocket 服务端/客户端、STOMP 消息协议
+
+#### 使用方式
+
+```bash
+# 切换到 Spring Boot 集成分支
+git checkout dev-springboot3.5.11
+
+# 安装到本地 Maven 仓库
+mvn clean install
+
+# 生成项目时使用相同的命令，自动包含所有预置依赖
+mvn archetype:generate \
+  -DarchetypeGroupId=io.github.bobby \
+  -DarchetypeArtifactId=layered-multi-module-archetype \
+  -DarchetypeVersion=1.0.0-SNAPSHOT \
+  -DgroupId=com.bobby \
+  -DartifactId=bobbyDemo \
+  -Dversion=1.0.0 \
+  -Dpackage=com.bobby \
+  -DrootArtifactId=bobbyDemo \
+  -DjavaVersion=17 \
+  -DcompilerPluginVersion=3.11.0 \
+  -DinteractiveMode=false \
+  -DarchetypeCatalog=local
+```
+
+#### 分支特点
+
+- **开箱即用**：无需手动配置依赖，生成即可运行
+- **版本锁定**：所有依赖版本经过兼容性测试，避免冲突
+- **企业规范**：内置常用企业级开发组件，符合生产环境要求
+- **灵活扩展**：保留父 POM 依赖管理能力，可自由添加其他依赖
+- **启动入口**：在 controller 模块中预置 Spring Boot Application 启动类，项目生成后可直接运行
+
+---
+
 ##  快速开始
 1. 安装原型到本地 Maven 仓库
 ```
