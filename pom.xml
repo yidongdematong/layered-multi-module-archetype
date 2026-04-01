@@ -7,7 +7,7 @@
   <groupId>io.github.bobby</groupId>
   <artifactId>layered-multi-module-archetype</artifactId>
   <!-- 版本添加SNAPSHOT，区分开发版/正式版，适配Maven仓库规范 -->
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>maven-archetype</packaging>
 
   <name>Archetype - layered-multi-module-archetype</name>
@@ -98,4 +98,19 @@
       </plugin>
     </plugins>
   </build>
+
+<!--  配置 私库信息-->
+<!--  <distributionManagement>-->
+<!--&lt;!&ndash;    正式版地址&ndash;&gt;-->
+<!--    <repository>-->
+<!--      <id>bobby-group</id>-->
+<!--      <name>personal maven</name>-->
+<!--      <url>http://127.0.0.1:10086/repository/bobby-hosted/</url>-->
+<!--    </repository>-->
+<!--&lt;!&ndash;    <snapshotRepository>&ndash;&gt;-->
+<!--&lt;!&ndash;      <id>bobby-group</id>&ndash;&gt;-->
+<!--&lt;!&ndash;      <name>personal maven</name>&ndash;&gt;-->
+<!--&lt;!&ndash;      <url>http://127.0.0.1:10086/repository/bobby-snapshots/</url>&ndash;&gt;-->
+<!--&lt;!&ndash;    </snapshotRepository>&ndash;&gt;-->
+<!--  </distributionManagement>-->
 </project>
