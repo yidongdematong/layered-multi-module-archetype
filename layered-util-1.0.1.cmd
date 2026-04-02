@@ -112,7 +112,7 @@ if "!MODE!"=="1" (
     echo Java版本：!JAVA_VERSION!
     echo 编译器插件版本：!COMPILER_PLUGIN_VERSION!
     echo 交互模式：!INTERACTIVE_MODE!
-    echo 启动类名 (applicationClassName)：!APPLICATION_CLASS_NAME!
+    echo 启动类名：!APPLICATION_CLASS_NAME!
     echo ----------------------------------------------
 )
 
@@ -159,7 +159,7 @@ mvn archetype:generate ^
 -DarchetypeCatalog=!ARCHETYPE_CATALOG! ^
 -DjavaVersion=!JAVA_VERSION! ^
 -DcompilerPluginVersion=!COMPILER_PLUGIN_VERSION! ^
--DinteractiveMode=!INTERACTIVE_MODE!
+-DinteractiveMode=!INTERACTIVE_MODE! ^
 -DapplicationClassName=!APPLICATION_CLASS_NAME!
 :: ====================== 结果反馈 ======================
 if errorlevel 1 (
