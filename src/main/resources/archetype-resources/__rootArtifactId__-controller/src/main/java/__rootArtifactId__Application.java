@@ -9,9 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author ${user}
  */
 @SpringBootApplication
-public class ${rootArtifactId}Application {
+public class ${applicationClassName} {
 
     public static void main(String[] args) {
-        SpringApplication.run(${rootArtifactId}Application.class, args);
+        SpringApplication.run(${applicationClassName}.class, args);
     }
 }

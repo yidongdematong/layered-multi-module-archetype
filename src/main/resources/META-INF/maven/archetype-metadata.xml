@@ -37,11 +37,15 @@ under the License.
     <requiredProperty key="package">
       <defaultValue>${groupId}.${artifactId}</defaultValue>
     </requiredProperty>
-    <!-- 根模块ID，与archetype-resources中目录占位符__rootArtifactId__匹配，默认复用artifactId -->
+    <!-- 根模块 ID，与 archetype-resources 中目录占位符__rootArtifactId__匹配，默认复用 artifactId -->
     <requiredProperty key="rootArtifactId">
       <defaultValue>${artifactId}</defaultValue>
     </requiredProperty>
-    <!-- 新增：Java版本属性，默认值8 -->
+    <!-- 应用启动类类名，默认值为 rootArtifactId 的大驼峰形式 + Application，解决连字符命名问题 -->
+    <requiredProperty key="applicationClassName">
+      <defaultValue>${rootArtifactId}Application</defaultValue>
+    </requiredProperty>
+    <!-- 新增：Java 版本属性，默认值 8 -->
     <requiredProperty key="javaVersion">
       <defaultValue>17</defaultValue>
     </requiredProperty>
@@ -87,8 +91,23 @@ under the License.
             <include>**/*.java</include>
           </includes>
         </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.yml</include>
+            <include>**/*.yaml</include>
+            <include>**/*.properties</include>
+            <include>**/*.xml</include>
+          </includes>
+        </fileSet>
         <fileSet filtered="false" packaged="false" encoding="UTF-8">
           <directory>src/main/resources</directory>
+          <excludes>
+            <exclude>**/*.yml</exclude>
+            <exclude>**/*.yaml</exclude>
+            <exclude>**/*.properties</exclude>
+            <exclude>**/*.xml</exclude>
+          </excludes>
         </fileSet>
       </fileSets>
     </module>
@@ -107,8 +126,23 @@ under the License.
             <include>**/*.java</include>
           </includes>
         </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.yml</include>
+            <include>**/*.yaml</include>
+            <include>**/*.properties</include>
+            <include>**/*.xml</include>
+          </includes>
+        </fileSet>
         <fileSet filtered="false" packaged="false" encoding="UTF-8">
           <directory>src/main/resources</directory>
+          <excludes>
+            <exclude>**/*.yml</exclude>
+            <exclude>**/*.yaml</exclude>
+            <exclude>**/*.properties</exclude>
+            <exclude>**/*.xml</exclude>
+          </excludes>
         </fileSet>
       </fileSets>
     </module>
@@ -127,8 +161,23 @@ under the License.
             <include>**/*.java</include>
           </includes>
         </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.yml</include>
+            <include>**/*.yaml</include>
+            <include>**/*.properties</include>
+            <include>**/*.xml</include>
+          </includes>
+        </fileSet>
         <fileSet filtered="false" packaged="false" encoding="UTF-8">
           <directory>src/main/resources</directory>
+          <excludes>
+            <exclude>**/*.yml</exclude>
+            <exclude>**/*.yaml</exclude>
+            <exclude>**/*.properties</exclude>
+            <exclude>**/*.xml</exclude>
+          </excludes>
         </fileSet>
       </fileSets>
     </module>
@@ -147,8 +196,23 @@ under the License.
             <include>**/*.java</include>
           </includes>
         </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.yml</include>
+            <include>**/*.yaml</include>
+            <include>**/*.properties</include>
+            <include>**/*.xml</include>
+          </includes>
+        </fileSet>
         <fileSet filtered="false" packaged="false" encoding="UTF-8">
           <directory>src/main/resources</directory>
+          <excludes>
+            <exclude>**/*.yml</exclude>
+            <exclude>**/*.yaml</exclude>
+            <exclude>**/*.properties</exclude>
+            <exclude>**/*.xml</exclude>
+          </excludes>
         </fileSet>
       </fileSets>
     </module>

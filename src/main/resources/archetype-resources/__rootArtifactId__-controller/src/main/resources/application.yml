@@ -1,0 +1,14 @@
+# ========== 1. 基础应用配置 ==========
+spring:
+  # 应用名称（用于日志、监控等标识）
+  application:
+    name: ${rootArtifactId}
+  # 环境配置（对应多环境：dev/test/prod）
+  profiles:
+    active: dev  # 激活dev环境配置
+server:
+  # 端口号（默认8080）
+  port: 8081
+  # 上下文路径（访问前缀，默认/，如配置后访问地址：http://localhost:8081/agbank/xxx）
+  servlet:
+    context-path: /

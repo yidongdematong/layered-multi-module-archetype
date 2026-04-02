@@ -95,16 +95,17 @@ mvn clean install
  ```
 # 完整参数版（显式指定所有参数）
 mvn archetype:generate \
-  -DarchetypeGroupId=io.github.bobby \          # 你的原型组ID
-  -DarchetypeArtifactId=layered-multi-module-archetype \  # 你的原型构件ID
+  -DarchetypeGroupId=io.github.bobby \          # 你的原型组 ID
+  -DarchetypeArtifactId=layered-multi-module-archetype \  # 你的原型构件 ID
   -DarchetypeVersion=1.0.0-SNAPSHOT \           # 你的原型版本
-  -DgroupId=com.bobby \                         # 项目组ID（必填）
+  -DgroupId=com.bobby \                         # 项目组 ID（必填）
   -DartifactId=bobbyDemo \                      # 父项目名称（必填）
-  -Dversion=1.0.0 \                             # 项目版本（可选，默认1.0-SNAPSHOT）
+  -Dversion=1.0.0 \                             # 项目版本（可选，默认 1.0-SNAPSHOT）
   -Dpackage=com.bobby \                         # 基础包名（可选，默认=${groupId}.${artifactId}）
   -DrootArtifactId=bobbyDemo \                  # 子模块前缀（可选，默认=${artifactId}）
-  -DjavaVersion=17 \                            # Java版本（可选，默认8）
-  -DcompilerPluginVersion=3.11.0 \              # maven-compiler-plugin版本（可选）
+  -DapplicationClassName=BobbyDemoApplication \ # 启动类类名（可选，默认=${rootArtifactId}Application，建议手动指定大驼峰命名）
+  -DjavaVersion=17 \                            # Java 版本（可选，默认 8）
+  -DcompilerPluginVersion=3.11.0 \              # maven-compiler-plugin 版本（可选）
   -DinteractiveMode=false \                     # 非交互模式，跳过确认
   -DarchetypeCatalog=local                      # 仅从本地仓库查找原型
 ```
